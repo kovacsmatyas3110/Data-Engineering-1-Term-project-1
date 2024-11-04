@@ -195,7 +195,7 @@ Once you have located your secure folder, create a subfolder named database and 
 
 For the next steps of the project, we will use the `ucl_ETL_pipeline.sql` file.
 
-From the relational database, I created a data warehouse for further analytics. The warehouse has the following attributes:
+From the relational database, I created a data warehouse, `player_statistics`, for further analytics. The warehouse has the following attributes:
 | Variable                     | Description                                                                 |
 |------------------------------|-----------------------------------------------------------------------------|
 | `player_ID`                  | Unique identifier for each player.                                         |
@@ -238,3 +238,70 @@ From the relational database, I created a data warehouse for further analytics. 
 | `distance_covered`           | Total distance covered by the player during matches.                       |
 | `total_ranking`              | Sum of the rankings from various statistics.                               |
 | `number_of_rankings`         | Total number of rankings included in the total ranking.                   |
+
+
+## Data Marts
+
+The previously created data warehouse gives me the opportunity to create a data mart to each of my analytical question.
+
+### 1. Data Mart: Analysing the difference between the positions
+
+The `position_stats_view` view aggregates and presents player statistics based on their positions. This view includes various performance metrics for each player, calculated from the `player_statistics` table. Below are the details of each variable included in the view:
+
+| Variable                     | Description                                                                                  |
+|------------------------------|----------------------------------------------------------------------------------------------|
+| `player_ID`                  | Unique identifier for each player.                                                          |
+| `position`                   | The playing position of the player (e.g., Forward, Midfielder, Defender).                  |
+| `total_attempts`             | Total attempts on goal made by the player.                                                 |
+| `balls_recovered`            | Number of balls recovered by the player.                                                    |
+| `fouls_committed`            | Total fouls committed by the player.                                                       |
+| `red_card`                   | Number of red cards received by the player.                                                |
+| `yellow_card`                | Number of yellow cards received by the player.                                             |
+| `distance_covered`           | Total distance covered by the player during matches.                                       |
+| `total_ranking`              | Sum of the rankings from various performance statistics for the player.                    |
+| `number_of_rankings`         | Total number of rankings considered for the player.                                        |
+| `average_ranking`            | Average ranking of the player, calculated as `total_ranking` divided by `number_of_rankings`. If there are no rankings, the value is `NULL`. |
+
+
+This view is useful for analyzing player performance in relation to their positions, allowing for insights into how players in different roles contribute to their teams across various metrics.
+
+For this data mart, I also created a stored procedure that generates a table with the same variables. Additionally, I set up a scheduled event to update this table daily, ensuring that users have access to the most accurate and up-to-date data.
+
+### 2. Data Mart: Analysing the difference between the teams
+
+The `team_stats_view` view aggregates performance statistics for each club, providing an overview of key metrics based on the players within those clubs. This view consolidates data from the `player_statistics` table and includes the following variables:
+
+| Variable                | Description                                                                      |
+|-------------------------|----------------------------------------------------------------------------------|
+| `club`                  | The name of the club.                                                            |
+| `number_of_players`     | Total number of players associated with the club.                               |
+| `goals`                 | Total number of goals scored by players in the club.                            |
+| `assists`               | Total number of assists made by players in the club.                           |
+| `penalty_goals`         | Total number of goals scored from penalties by players in the club.            |
+| `corners_taken`         | Total number of corners taken by players in the club.                          |
+| `fouls_committed`       | Total number of fouls committed by players in the club.                        |
+| `cleansheets`           | Total number of clean sheets recorded by the club's goalkeepers.               |
+| `distance_covered`      | Total distance covered by all players in the club during matches.              |
+
+This view is useful for analyzing the overall performance of each club by summarizing the contributions of its players across various metrics, enabling comparisons between clubs and insights into team performance.
+
+For this data mart, I also created a stored procedure that generates a table with the same variables. Additionally, I set up a scheduled event to update this table daily, ensuring that users have access to the most accurate and up-to-date data.
+
+### 3. Data Mart: Most effective attacking player
+
+The `most_eff_att_player_view` view identifies and ranks the most efficient attacking players based on their contributions in terms of goals and assists relative to the minutes played. This view includes the following variables:
+
+| Variable                      | Description                                                                                   |
+|-------------------------------|-----------------------------------------------------------------------------------------------|
+| `player_name`                 | Name of the player.                                                                           |
+| `minutes_per_goal`            | Average number of minutes played per goal scored.                                             |
+| `minutes_per_assist`          | Average number of minutes played per assist made.                                             |
+| `minutes_per_goal_and_assist` | Average number of minutes played per combined goal and assist.                                |
+
+Filtering Conditions:
+
+The view filters out players who have not contributed either goals or assists, ensuring that only those with valid statistics are included in the results.
+I replaced fields with NULL values with 9999999, making it easier to order the view and identify the most effective players.
+
+This view is useful for evaluating player efficiency in attacking roles, allowing coaches, analysts, and fans to identify players who contribute effectively to their team's offensive play relative to the time spent on the pitch.
+
