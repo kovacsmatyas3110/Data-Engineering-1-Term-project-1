@@ -176,3 +176,17 @@ After that I updated every table with the player_ID's and removed the player_nam
 After these changes I could creat my relational database which has the following EER diagram:
 ![UCL Entity-Relationship Diagram](UCL_EER.png)
 
+## Reproducing the Database
+
+To reproduce this database for yourself, you have two options:
+
+1. **Using the `ucl_database_dump.sql` File**  
+   The `ucl_database_dump.sql` file will automatically create the tables and populate them with the content from the CSV files. Afterward, it will create the players table and establish the necessary joins to achieve the desired database structure.
+
+2. **Creating the Database from Scratch**  
+   If you prefer to create the database from the beginning, use the `ucl_database_creation.sql` file. However, in this case, you will need to place the CSV files in the secure folder. You can find the path to this folder with the following command:
+
+   ```sql
+   SHOW VARIABLES LIKE 'secure_file_priv';
+
+Once you have located your secure folder, create a subfolder named database and insert the downloaded CSV files into it. After that, running the ucl_database_creation.sql file should work perfectly.
