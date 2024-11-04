@@ -176,7 +176,7 @@ After that I updated every table with the player_ID's and removed the player_nam
 After these changes I could creat my relational database which has the following EER diagram:
 ![UCL Entity-Relationship Diagram](UCL_EER.png)
 
-## Reproducing the Database
+### Reproducing the Database
 
 To reproduce this database for yourself, you have two options:
 
@@ -190,3 +190,51 @@ To reproduce this database for yourself, you have two options:
    SHOW VARIABLES LIKE 'secure_file_priv';
 
 Once you have located your secure folder, create a subfolder named database and insert the downloaded CSV files into it. After that, running the ucl_database_creation.sql file should work perfectly.
+
+## Data Warehouse
+
+For the next steps of the project, we will use the `ucl_ETL_pipeline.sql` file.
+
+From the relational database, I created a data warehouse for further analytics. The warehouse has the following attributes:
+| Variable                     | Description                                                                 |
+|------------------------------|-----------------------------------------------------------------------------|
+| `player_ID`                  | Unique identifier for each player.                                         |
+| `player_name`                | Name of the player.                                                        |
+| `club`                       | The club the player is affiliated with.                                     |
+| `position`                   | The playing position of the player (e.g., Forward, Midfielder, Defender).  |
+| `assists`                    | Number of assists made by the player.                                      |
+| `corner_taken`               | Number of corners taken by the player.                                     |
+| `offsides`                   | Number of times the player was caught offside.                            |
+| `dribbles`                   | Number of successful dribbles by the player.                              |
+| `match_played`               | Total matches played by the player.                                        |
+| `minutes_played`             | Total minutes played by the player.                                        |
+| `total_attempts`             | Total attempts on goal made by the player.                                 |
+| `on_target`                  | Number of attempts on target.                                              |
+| `off_target`                 | Number of attempts off target.                                             |
+| `blocked`                    | Number of shots blocked by defenders.                                      |
+| `balls_recovered`            | Number of balls recovered by the player.                                   |
+| `tackles`                    | Total tackles made by the player.                                         |
+| `tackles_won`                | Number of successful tackles.                                              |
+| `tackles_lost`               | Number of unsuccessful tackles.                                            |
+| `clearance_attempted`        | Number of defensive clearances attempted by the player.                    |
+| `fouls_committed`            | Total fouls committed by the player.                                       |
+| `fouls_suffered`             | Total fouls suffered by the player.                                        |
+| `red_card`                   | Number of red cards received by the player.                                |
+| `yellow_card`                | Number of yellow cards received by the player.                             |
+| `pass_accuracy`              | Accuracy of passes made by the player (percentage).                        |
+| `pass_attempted`             | Total number of passes attempted by the player.                            |
+| `pass_completed`             | Total number of passes completed by the player.                            |
+| `freekicks_taken`            | Number of free kicks taken by the player.                                  |
+| `goals`                      | Total number of goals scored by the player.                                |
+| `penalties`                  | Number of penalties scored by the player.                                  |
+| `right_foot_goals`          | Goals scored using the right foot.                                        |
+| `left_foot_goals`           | Goals scored using the left foot.                                         |
+| `header_goals`              | Goals scored with the head.                                               |
+| `saved_balls`                | Number of balls saved by the goalkeeper.                                   |
+| `conceded_goals`            | Number of goals conceded by the goalkeeper.                                |
+| `saved_penalties`            | Number of penalties saved by the goalkeeper.                               |
+| `cleansheets`                | Number of clean sheets kept by the goalkeeper.                             |
+| `punches_made`               | Number of punches made by the goalkeeper.                                  |
+| `distance_covered`           | Total distance covered by the player during matches.                       |
+| `total_ranking`              | Sum of the rankings from various statistics.                               |
+| `number_of_rankings`         | Total number of rankings included in the total ranking.                   |
