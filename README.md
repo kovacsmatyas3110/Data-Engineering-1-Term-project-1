@@ -25,3 +25,135 @@ The downloaded CSV files are stored in a compressed folder: `ucl_database.zip`. 
 - `goalkeeping.csv`
 - `goals.csv`
 - `key_stats.csv`
+
+In every table I added a player_ID column what I will use later in my project. 
+
+Here you can find a description about each table:
+### 1. `attacking` Table
+This table contains data about attacking statistics for players.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on their attacking performance.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player (e.g., forward, midfielder).
+- **assists**: Number of assists made by the player.
+- **corner_taken**: Number of corners taken by the player.
+- **offsides**: Number of times the player was caught offside.
+- **dribbles**: Number of successful dribbles made by the player.
+- **match_played**: Number of matches the player participated in.
+
+### 2. `attempts` Table
+This table holds data on shooting and goal attempts.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on shooting statistics.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **total_attempts**: Total number of shot attempts made by the player.
+- **on_target**: Number of attempts that were on target.
+- **off_target**: Number of attempts that were off target.
+- **blocked**: Number of shot attempts that were blocked.
+- **match_played**: Number of matches the player participated in.
+
+### 3. `defending` Table
+This table provides information on defensive statistics for players.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on defensive statistics.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **balls_recovered**: Number of times the player recovered possession.
+- **tackles**: Number of tackles made by the player.
+- **t_won**: Number of tackles won.
+- **t_lost**: Number of tackles lost.
+- **clearance_attempted**: Number of clearances attempted by the player.
+- **match_played**: Number of matches the player participated in.
+
+### 4. `disciplinary` Table
+This table tracks disciplinary records for players.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on disciplinary records.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **fouls_committed**: Number of fouls committed by the player.
+- **fouls_suffered**: Number of fouls the player suffered.
+- **red**: Number of red cards received by the player.
+- **yellow**: Number of yellow cards received by the player.
+- **minutes_played**: Total minutes the player played.
+- **match_played**: Number of matches the player participated in.
+
+### 5. `distributon` Table
+This table holds data on passing and distribution statistics.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on passing accuracy and attempts.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **pass_accuracy**: Pass accuracy as a percentage.
+- **pass_attempted**: Number of passes attempted by the player.
+- **pass_completed**: Number of completed passes by the player.
+- **cross_accuracy**: Cross accuracy as a percentage.
+- **cross_attempted**: Number of crosses attempted.
+- **cross_completed**: Number of crosses completed.
+- **freekicks_taken**: Number of free kicks taken.
+- **match_played**: Number of matches the player participated in.
+
+### 6. `goalkeeping` Table
+This table provides goalkeeping statistics for players.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on goalkeeping performance.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player (goalkeeper).
+- **saved**: Number of saves made by the goalkeeper.
+- **conceded**: Number of goals conceded by the goalkeeper.
+- **saved_penalties**: Number of penalties saved.
+- **cleansheets**: Number of matches without conceding a goal.
+- **punches_made**: Number of punches made to clear the ball.
+- **match_played**: Number of matches the player participated in.
+
+### 7. `goals` Table
+This table captures detailed information about the types of goals scored.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **ranking**: Overall player ranking based on goal statistics.
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **goals**: Total number of goals scored by the player.
+- **right_foot**: Number of goals scored with the right foot.
+- **left_foot**: Number of goals scored with the left foot.
+- **headers**: Number of goals scored with headers.
+- **other**: Number of goals scored by other means.
+- **inside_area**: Number of goals scored inside the penalty area.
+- **outside_area**: Number of goals scored from outside the penalty area.
+- **penalties**: Number of goals scored from penalty kicks.
+- **match_played**: Number of matches the player participated in.
+
+### 8. `key_stats` Table
+This table provides general key statistics for players.
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **player_name**: Name of the player.
+- **player_ID**: Unique identifier for the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player.
+- **minutes_played**: Total minutes the player played.
+- **match_played**: Number of matches the player participated in.
+- **goals**: Total number of goals scored by the player.
+- **assists**: Number of assists made by the player.
+- **distance_covered**: Total distance covered by the player during matches (in meters).
