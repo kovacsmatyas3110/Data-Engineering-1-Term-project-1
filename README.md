@@ -173,3 +173,6 @@ After that I updated every table with the player_ID's and removed the player_nam
 
 > **Note:** It would als make sense to remove the positon and club column too because they can be found in the player table, altough I chose not to do that in my project.
 
+After these changes I could creat my relational database which has the following EER diagram:
+![UCL Entity-Relationship Diagram](UCL_EER.png)
+
