@@ -157,3 +157,19 @@ This table provides general key statistics for players.
 - **goals**: Total number of goals scored by the player.
 - **assists**: Number of assists made by the player.
 - **distance_covered**: Total distance covered by the player during matches (in meters).
+
+## Operational layer
+
+To create my relational database out of these csv files I created a new table which contains basic information of the players with the following columns:
+
+### 9. `players` Table
+
+- **ID**: Unique identifier for each record (auto-incremented).
+- **player_name**: Name of the player.
+- **club**: The club for which the player plays.
+- **position**: The playing position of the player (e.g., forward, midfielder, defender, goalkeeper).
+
+After that I updated every table with the player_ID's and removed the player_name columns.
+
+> **Note:** It would als make sense to remove the positon and club column too because they can be found in the player table, altough I chose not to do that in my project.
+
