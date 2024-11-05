@@ -15,7 +15,7 @@ During this project, I aimed to gain insights into the dataset from three differ
 ### Source
 I downloaded the raw database from [Kaggle](https://www.kaggle.com/datasets/azminetoushikwasi/ucl-202122-uefa-champions-league).
 
-The downloaded CSV files are stored in a compressed folder: `ucl_database.zip`. This folder contains the following 7 CSV files:
+The downloaded CSV files are stored in a compressed folder: `ucl_database.zip`. This folder contains the following 8 CSV files:
 
 - `attacking.csv`
 - `attempts.csv`
